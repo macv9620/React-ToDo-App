@@ -1,0 +1,27 @@
+.TodoItem {
+  font-size: 14px;
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0;
+  padding: 0px 10px;
+  border-radius: 30px;
+  border-style: solid;
+  border-color: var(--light-grey);
+  border-width: 1px;
+}
+
+.TodoItem p {
+  margin: 0;
+  padding: 0;
+}
+
+#TodoItemCheck {
+    cursor: pointer;
+}
+
+#TodoItemDelete {
+  color: red;
+  cursor: pointer;
+}
