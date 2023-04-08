@@ -6,3 +6,7 @@
    margin: 0px 20px; 
    margin-bottom: 30px;
 }
+
+.w3-light-grey:hover {
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}

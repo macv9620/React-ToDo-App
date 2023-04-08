@@ -12,6 +12,18 @@ const todos = [
   { id: 2, text: "Tomar el curso", completed: false },
   { id: 3, text: "Ir al gym", completed: false },
   { id: 4, text: "Ir al hospital", completed: false },
+  { id: 5, text: "Ir al hospital", completed: false },
+  { id: 6, text: "Ir al hospital", completed: false },
+  { id: 7, text: "Ir al hospital", completed: false },
+  { id: 8, text: "Ir al hospital", completed: false },
+  { id: 9, text: "Ir al hospital", completed: false },
+  { id: 10, text: "Ir al hospital", completed: false },
+  { id: 11, text: "Ir al hospital", completed: false },
+  { id: 12, text: "Ir al hospital", completed: false },
+  { id: 13, text: "Ir al hospital", completed: false },
+  { id: 14, text: "Ir al hospital", completed: false },
+  { id: 15, text: "Ir al hospital", completed: false },
+  { id: 16, text: "Ir al hospital", completed: false }
 ];
 
 function App() {

@@ -1,12 +1,17 @@
-input{
+.TodoSearchBar{
     border: none;
-    border-radius: 5px;
+    border-radius: 15px;
     box-shadow: rgba(34, 66, 71, 0.2) 0px 2px 8px 0px;
     margin: 0 auto;
 }
 
-input::placeholder{
+.TodoSearchBar::placeholder{
     color: var(--light-grey);
     text-align: center;
 }
+
+.TodoSearchBar:focus {
+    outline-color: var(--marine-green);
+  }
+
 

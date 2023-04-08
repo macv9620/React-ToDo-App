@@ -1,0 +1,37 @@
+.TodoButton span{
+    width: 40px;
+    height: 40px;
+    font-size: 40px;
+    font-weight: 600;
+}
+
+.TodoButton{
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: none;
+    background-color: var(--marine-green);
+    color: white;
+    font-size: 40px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    display: flex;
+    padding: 0;
+    margin: 0;
+    font-weight: 600;
+    position: fixed;
+    right: 60px;
+    bottom: 20px;
+}
+
+.TodoButton:hover{
+    width: 45px;
+    height: 45px;
+    transition: 0.3s;
+}
+
+.TodoButton span:hover{
+    width: 45px;
+    height: 45px;
+    font-size: 45px;
+    transition: 0.3s;
+}

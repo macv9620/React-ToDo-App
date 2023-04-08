@@ -12,16 +12,36 @@
   border-width: 1px;
 }
 
-.TodoItem p {
+.TodoItem-p{
   margin: 0;
   padding: 0;
 }
 
+.TodoItem-p--completed{
+  margin: 0;
+  padding: 0;
+  text-decoration: line-through;
+  color: var(--light-grey);
+}
+
 #TodoItemCheck {
     cursor: pointer;
+    color: var(--marine-green);
+}
+
+#TodoItemCheck:hover{
+  background-color: var(--marine-green);
+  border-radius: 50%;
+  color: white;
 }
 
 #TodoItemDelete {
   color: red;
   cursor: pointer;
+}
+
+#TodoItemDelete:hover{
+  background-color: red;
+  color: white;
+  border-radius: 50%;
 }

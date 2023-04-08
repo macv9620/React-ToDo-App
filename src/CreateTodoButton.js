@@ -3,7 +3,9 @@ import './CreateTodoButton.css';
 
 function CreateTodoButton(){
     return(
-        <button>+</button>
+        <button className='TodoButton'><span className="material-symbols-outlined">
+        add
+        </span></button>
     )
 }
 
