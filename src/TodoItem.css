@@ -12,6 +12,10 @@
   border-width: 1px;
 }
 
+.TodoItem--completed{
+  background-color: var(--light-light-grey);
+}
+
 .TodoItem-p{
   margin: 0;
   padding: 0;
@@ -24,23 +28,29 @@
   color: var(--light-grey);
 }
 
-#TodoItemCheck {
+.TodoItemCheck {
     cursor: pointer;
     color: var(--marine-green);
 }
 
-#TodoItemCheck:hover{
+.TodoItemCheck--completed{
+  background-color: var(--marine-green);
+  color: white;
+  border-radius: 50%;
+}
+
+.TodoItemCheck:hover{
   background-color: var(--marine-green);
   border-radius: 50%;
   color: white;
 }
 
-#TodoItemDelete {
+.TodoItemDelete {
   color: red;
   cursor: pointer;
 }
 
-#TodoItemDelete:hover{
+.TodoItemDelete:hover{
   background-color: red;
   color: white;
   border-radius: 50%;
