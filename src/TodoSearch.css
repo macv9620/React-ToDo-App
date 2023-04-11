@@ -3,6 +3,7 @@
     border-radius: 15px;
     box-shadow: rgba(34, 66, 71, 0.2) 0px 2px 8px 0px;
     margin: 0 auto;
+    padding: 0px 20px;
 }
 
 .TodoSearchBar::placeholder{
@@ -13,5 +14,11 @@
 .TodoSearchBar:focus {
     outline-color: var(--marine-green);
   }
+
+.noSearchMatches{
+    text-align: center;
+    font-size: 12px;
+    color: var(--light-grey);
+}
 
 

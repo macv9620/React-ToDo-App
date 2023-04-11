@@ -1,14 +1,20 @@
 import React from "react";
-import './TodoList.css';
+import "./TodoList.css";
 
 function TodoList(props) {
-  return (
-    <section className="TodoListSection">
-      <ul>
-        {props.children}
-      </ul>
-    </section>
-  );
+  if (props.matches === 0) {
+    return (
+      <p className= "noSearchMatches">Oops, there are no matches for your search</p>
+    )
+      
+    
+  } else {
+    return (
+      <section className="TodoListSection">
+        <ul>{props.children}</ul>
+      </section>
+    );
+  }
 }
 
 export { TodoList };
