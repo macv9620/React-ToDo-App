@@ -2,27 +2,14 @@ import React from "react";
 import { useState } from "react";
 import { AppUI } from "./AppUI";
 
-// const todos = [
-//   { id: 1, text: "Cortar cebolla", completed: false },
-//   { id: 2, text: "Tomar el curso 7", completed: false },
-//   { id: 3, text: "Ir al gym", completed: false },
-//   { id: 4, text: "Hacer tarea", completed: false },
-//   { id: 5, text: "Junta directiva", completed: false },
-//   { id: 6, text: "Proyecto", completed: false },
-//   { id: 7, text: "Reunion amigos", completed: false },
-//   { id: 8, text: "Jugar fulbol", completed: false },
-//   { id: 9, text: "Correr", completed: false },
-//   { id: 10, text: "Ir al hospital", completed: false },
-// ];
-
 //Custom Hook
-function useLocalStorage(localStorageProp, initialItemValue) {
+function useLocalStorage(localStorageProp, initialPropValue) {
   const localStoragedItem = localStorage.getItem(localStorageProp);
 
   let defaultItem;
 
   if (!localStoragedItem) {
-    defaultItem = initialItemValue;
+    defaultItem = initialPropValue;
   } else {
     defaultItem = JSON.parse(localStoragedItem);
   }
@@ -39,7 +26,6 @@ function useLocalStorage(localStorageProp, initialItemValue) {
 }
 
 function App() {
-
   const [todos, saveTodos] = useLocalStorage("TODOS_V1", []);
 
   const [searchBarValue, setSearchBarValue] = useState("");
