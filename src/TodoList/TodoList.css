@@ -6,9 +6,14 @@ ul {
 }
 
 .TodoListSection{
+  margin: 0;
   height: 350px;
   overflow-x: hidden;
   overflow-y: scroll;
+}
+
+.TodoListSection ul{
+  margin-top: 0;
 }
 
 .TodoListSection::-webkit-scrollbar {

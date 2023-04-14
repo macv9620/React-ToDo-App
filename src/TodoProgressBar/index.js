@@ -1,8 +1,11 @@
 import React from "react";
 import "./TodoProgress.css";
+import { useContext } from "react";
+import { TodoContext } from "../TodoContext";
 
-function TodoProgressBar({ total, completed }) {
-  if (total === 0) {
+function TodoProgressBar() {
+  const {totalTodos, completedTodos} = useContext(TodoContext);
+  if (totalTodos === 0) {
     return (
       <div className="w3-light-grey w3-round-xlarge">
         <div
@@ -15,7 +18,7 @@ function TodoProgressBar({ total, completed }) {
     );
   } else {
     const progressPercentage = Math.round(
-      (Number(completed) / Number(total)) * 100
+      (Number(completedTodos) / Number(totalTodos)) * 100
     );
 
     const progressPercentageString = { width: `${progressPercentage}%` };

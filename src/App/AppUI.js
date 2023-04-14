@@ -6,38 +6,24 @@ import { TodoList } from "../TodoList";
 import { TodoItem } from "../TodoItem";
 import { TodoTitle } from "../TodoTitle";
 import { TodoProgressBar } from "../TodoProgressBar";
+import { useContext } from "react";
+import { TodoContext } from "../TodoContext";
 
-function AppUI({
-  totalTodos,
-  completedTodos,
-  setSearchBarValue,
-  searchBarValue,
-  searchedTodos,
-  checkUnCheckTodo,
-  deleteTodo,
-}) {
+function AppUI() {
+  const {searchedTodos} = useContext(TodoContext)
   return (
     <React.Fragment>
       <TodoTitle />
-
-      <TodoCounter total={totalTodos} completed={completedTodos} />
-
-      <TodoProgressBar total={totalTodos} completed={completedTodos} />
-
-      <TodoSearch
-        searchBarValue={searchBarValue}
-        setSearchBarValue={setSearchBarValue}
-      />
-
-      <TodoList matches={searchedTodos.length} total={totalTodos}>
+      <TodoCounter/>
+      <TodoProgressBar/>
+      <TodoSearch/>
+      <TodoList>
         {searchedTodos.map((todo) => (
           <TodoItem
             key={todo.id}
             id={todo.id}
             text={todo.text}
             completed={todo.completed}
-            checkUnCheckTodo={checkUnCheckTodo}
-            deleteTodo={deleteTodo}
           />
         ))}
       </TodoList>

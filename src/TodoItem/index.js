@@ -1,13 +1,16 @@
 import React from "react";
 import "./TodoItem.css";
+import { useContext } from "react";
+import { TodoContext } from "../TodoContext";
 
 function TodoItem(props) {
+  const {checkUnCheckTodo, deleteTodo} = useContext(TodoContext);
   const updateTodoState = () => {
-    props.checkUnCheckTodo(props.id);
+    checkUnCheckTodo(props.id);
   };
 
   const delTodo = () => {
-    props.deleteTodo(props.id);
+    deleteTodo(props.id);
   };
 
   return (

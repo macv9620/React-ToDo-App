@@ -1,26 +1,30 @@
 import React from "react";
 import "./TodoList.css";
+import { useContext } from "react";
+import { TodoContext } from "../TodoContext";
 
-function TodoList(props) {
-  if (props.total === 0) {
+
+function TodoList({
+  children, 
+}) {
+
+  const { loading, error, totalTodos, searchedTodos} = useContext(TodoContext);
+
     return (
-      <p className="noSearchMatches">
-        Hey! You have no tasks created yet, get started!
-      </p>
+      <>
+        <p className="noSearchMatches">
+          {(loading && totalTodos === 0) && "Loading info..."}
+          {error && `An error has occurred, please refresh the page`}
+          {(!loading && totalTodos === 0) && 'Hey! You have no tasks created yet, get started!'}
+          {(searchedTodos.length === 0 && totalTodos !== 0) && 'Oops, there are no matches for your search'}
+        </p>
+        <section className="TodoListSection">
+          <ul>{!error && children}</ul>
+        </section>
+        
+      </>
     );
-  } else if (props.matches === 0) {
-    return (
-      <p className="noSearchMatches">
-        Oops, there are no matches for your search
-      </p>
-    );
-  } else {
-    return (
-      <section className="TodoListSection">
-        <ul>{props.children}</ul>
-      </section>
-    );
-  }
+  
 }
 
 export { TodoList };

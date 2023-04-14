@@ -1,8 +1,10 @@
 import React from "react";
 import './TodoSearch.css';
+import { useContext } from "react";
+import { TodoContext } from "../TodoContext";
 
-function TodoSearch({searchBarValue, setSearchBarValue}){
-
+function TodoSearch(){
+const {searchBarValue, setSearchBarValue} = useContext(TodoContext);
     const onChangeSearchValue = (event)=>{
         setSearchBarValue(event.target.value);
     }
