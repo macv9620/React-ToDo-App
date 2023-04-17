@@ -1,21 +1,19 @@
-import React from "react";
-import './CreateTodoButton.css';
+import React, { useContext } from "react";
+import "./CreateTodoButton.css";
+import { TodoContext } from "../TodoContext";
 
-function CreateTodoButton(){
+function CreateTodoButton() {
+  const { loading, setModalIsActive, modalIsActive, setInputIsEmpty } = useContext(TodoContext);
+  const openCreateTodoModal = () => {
+    modalIsActive? setModalIsActive(false): setModalIsActive(true) 
+    setInputIsEmpty(false);
+  };
+    return (
+      <button className={'TodoButton' + (modalIsActive?' TodoButton--close':'')} onClick={openCreateTodoModal}>
+        +
+      </button>
+    );
+  }
 
-    const openCreateTodoModal = () =>{
-        alert('Acá se debería abrir el modal');
-    }
-    return(
-        <button
-         className='TodoButton'
-         onClick={openCreateTodoModal}
-         >
-        <span className="material-symbols-outlined">
-        add
-        </span>
-        </button>
-    )
-}
 
-export {CreateTodoButton}
+export { CreateTodoButton };

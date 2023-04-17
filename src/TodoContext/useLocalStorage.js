@@ -27,7 +27,7 @@ function useLocalStorage(localStorageProp, initialPropValue) {
           defaultItem = JSON.parse(localStoragedItem);
         }
         saveTodos(defaultItem);
-      }, 5000);
+      }, 2000);
     } catch (error) {}
   }, []);
   return { todos, saveTodos, loading, setLoading, error, setError };

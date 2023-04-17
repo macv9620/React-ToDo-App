@@ -15,6 +15,8 @@ function TodoProvider(props) {
     []
   );
 
+  const [modalIsActive, setModalIsActive] =  useState(false);
+  const [inputIsEmpty, setInputIsEmpty] = useState(false);
   const [searchBarValue, setSearchBarValue] = useState("");
   const completedTodos = todos.filter((todo) => todo.completed).length;
   const totalTodos = todos.length;
@@ -42,6 +44,30 @@ function TodoProvider(props) {
     saveTodos(newDefaultTodos);
   };
 
+  const calculateNextId = ()=>{
+    const areThereTodos = JSON.parse(localStorage.getItem('TODOS_V1'));
+    if(!areThereTodos.length){
+      return 0;
+    } else {
+      const lastElement = areThereTodos[areThereTodos.length-1];
+      let lastElementId = Number(lastElement.id);
+      const newId = ++lastElementId;
+      return newId;
+    }
+  }
+
+  const insertTodo = (text)=>{
+    const newId = calculateNextId();
+    const updatedTodos = [...todos];
+    updatedTodos.push({
+      id: newId,
+      text: text,
+      completed: false,
+    });
+    saveTodos(updatedTodos);
+    setModalIsActive(false);
+  }
+
   return (
     <TodoContext.Provider value={{
       totalTodos,
@@ -53,6 +79,12 @@ function TodoProvider(props) {
       deleteTodo,
       loading,
       error,
+      modalIsActive, 
+      setModalIsActive,
+      saveTodos,
+      insertTodo,
+      inputIsEmpty, 
+      setInputIsEmpty,
     }}>
         {props.children}
     </TodoContext.Provider>

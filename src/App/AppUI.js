@@ -8,15 +8,17 @@ import { TodoTitle } from "../TodoTitle";
 import { TodoProgressBar } from "../TodoProgressBar";
 import { useContext } from "react";
 import { TodoContext } from "../TodoContext";
+import { Modal } from "../Modal";
+import { TodoForm } from "../Modal/TodoForm";
 
 function AppUI() {
-  const {searchedTodos} = useContext(TodoContext)
+  const { searchedTodos, modalIsActive, loading } = useContext(TodoContext);
   return (
     <React.Fragment>
       <TodoTitle />
-      <TodoCounter/>
-      <TodoProgressBar/>
-      <TodoSearch/>
+      <TodoCounter />
+      <TodoProgressBar />
+      <TodoSearch />
       <TodoList>
         {searchedTodos.map((todo) => (
           <TodoItem
@@ -28,7 +30,15 @@ function AppUI() {
         ))}
       </TodoList>
 
-      <CreateTodoButton />
+      {modalIsActive && (
+        <Modal>
+          <TodoForm/>
+        </Modal>
+      )}
+
+      {!loading && (
+        <CreateTodoButton />
+      )}
     </React.Fragment>
   );
 }
