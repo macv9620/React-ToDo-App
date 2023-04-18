@@ -2,28 +2,35 @@ import React, { useContext } from "react";
 import { TodoContext } from "../../TodoContext";
 
 function TodoForm() {
-  const { setModalIsActive, insertTodo, inputIsEmpty, setInputIsEmpty } =
+  const { setModalIsActive, insertTodo, inputIsEmpty, setInputIsEmpty, isModalOpenedFrom, updateTodo } =
     useContext(TodoContext);
+
   const closeModal = () => {
     setModalIsActive(false);
     setInputIsEmpty(false);
-
   };
   const getTodoText = () => {
     const text = document.getElementById("createTodoInput");
     if (!text.value) {
       setInputIsEmpty(true);
-    } else {
+    } else if(isModalOpenedFrom.from === 'createButton') {
       insertTodo(text.value);
+    } else if(isModalOpenedFrom.from === 'editButton'){
+      updateTodo(isModalOpenedFrom.id, text.value);
     }
   };
+
+console.log(isModalOpenedFrom);
+
   return (
     <div className="modal-background">
       <div className="modal-form">
-        <p className="modal-form--title">¡Create a ToDo!</p>
+        {(isModalOpenedFrom.from === 'createButton')&&(<p className="modal-form--title">¡Create a ToDo!</p>)}
+        {(isModalOpenedFrom.from === 'editButton')&&(<p className="modal-form--title">¡Edit a ToDo!</p>)}
         <textarea
           placeholder="Type here"
           className="modal-form--textarea"
+          defaultValue={isModalOpenedFrom.text}
           rows={1}
           id="createTodoInput"
         ></textarea>
@@ -32,7 +39,7 @@ function TodoForm() {
         )}
         <div className="modal-form-buttons">
           <button onClick={closeModal}>Cancel</button>
-          <button onClick={getTodoText}>Create</button>
+          <button onClick={getTodoText}>{(isModalOpenedFrom.from === 'editButton'?'Update':'Create')}</button>
         </div>
       </div>
     </div>

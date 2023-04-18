@@ -10,19 +10,23 @@
   border-style: solid;
   border-color: var(--light-grey);
   border-width: 1px;
+  width: 100%;
 }
 
-.TodoItem--completed{
+.TodoItem--completed {
   background-color: var(--light-light-grey);
   transition: 0.3s;
 }
 
-.TodoItem-p{
+.TodoItem-p {
   margin: 0;
   padding: 0;
+  width: 90%;
+  text-align: center;
+  overflow-x: hidden;
 }
 
-.TodoItem-p--completed{
+.TodoItem-p--completed {
   margin: 0;
   padding: 0;
   text-decoration: line-through;
@@ -31,18 +35,17 @@
 }
 
 .TodoItemCheck {
-    cursor: pointer;
-    color: var(--marine-green);
+  cursor: pointer;
+  color: var(--marine-green);
 }
 
-.TodoItemCheck--completed{
+.TodoItemCheck--completed {
   background-color: var(--marine-green);
   color: white;
   border-radius: 50%;
-
 }
 
-.TodoItemCheck:hover{
+.TodoItemCheck:hover {
   background-color: var(--marine-green);
   border-radius: 50%;
   color: white;
@@ -53,8 +56,19 @@
   cursor: pointer;
 }
 
-.TodoItemDelete:hover{
+.TodoItemDelete:hover {
   background-color: red;
+  color: white;
+  border-radius: 50%;
+}
+
+.TodoItemEdit {
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.TodoItemEdit:hover {
+  background-color: black;
   color: white;
   border-radius: 50%;
 }

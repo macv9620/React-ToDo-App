@@ -1,5 +1,6 @@
 .w3-blue {
   background-color: var(--orange) !important;
+  text-align: right;
 }
 
 .w3-light-grey{
@@ -10,3 +11,4 @@
 .w3-light-grey:hover {
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
+

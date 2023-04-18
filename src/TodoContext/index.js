@@ -18,6 +18,8 @@ function TodoProvider(props) {
   const [modalIsActive, setModalIsActive] =  useState(false);
   const [inputIsEmpty, setInputIsEmpty] = useState(false);
   const [searchBarValue, setSearchBarValue] = useState("");
+  const [isModalOpenedFrom, setIsModalOpenedFrom] = useState("")
+  const [isEditEnabled, setIsEditEnabled] = useState(true);
   const completedTodos = todos.filter((todo) => todo.completed).length;
   const totalTodos = todos.length;
 
@@ -68,6 +70,19 @@ function TodoProvider(props) {
     setModalIsActive(false);
   }
 
+  const updateTodo = (id, text)=>{
+    console.log('id: '+ id);
+    console.log('text: '+ text);
+    console.log(todos);
+    const updatedTodos = [...todos];
+    const todoIndex = updatedTodos.findIndex((todo)=>todo.id === id);
+    console.log(updatedTodos[todoIndex].text);
+    console.log(text);
+    updatedTodos[todoIndex].text = text;
+    saveTodos(updatedTodos);
+    setModalIsActive(false);
+  }
+
   return (
     <TodoContext.Provider value={{
       totalTodos,
@@ -85,6 +100,11 @@ function TodoProvider(props) {
       insertTodo,
       inputIsEmpty, 
       setInputIsEmpty,
+      isModalOpenedFrom, 
+      setIsModalOpenedFrom,
+      updateTodo,
+      isEditEnabled, 
+      setIsEditEnabled,
     }}>
         {props.children}
     </TodoContext.Provider>

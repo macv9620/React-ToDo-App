@@ -3,17 +3,37 @@ import "./CreateTodoButton.css";
 import { TodoContext } from "../TodoContext";
 
 function CreateTodoButton() {
-  const { loading, setModalIsActive, modalIsActive, setInputIsEmpty } = useContext(TodoContext);
+  const {
+    loading,
+    setModalIsActive,
+    modalIsActive,
+    setInputIsEmpty,
+    isModalOpenedFrom,
+    setIsModalOpenedFrom,
+  } = useContext(TodoContext);
+
   const openCreateTodoModal = () => {
-    modalIsActive? setModalIsActive(false): setModalIsActive(true) 
+    if (modalIsActive) {
+      setModalIsActive(false);
+    } else {
+      setModalIsActive(true)
+      setIsModalOpenedFrom({
+        from: "createButton",
+        id: "",
+        text: "",
+      });
+    }
+
     setInputIsEmpty(false);
   };
-    return (
-      <button className={'TodoButton' + (modalIsActive?' TodoButton--close':'')} onClick={openCreateTodoModal}>
-        +
-      </button>
-    );
-  }
-
+  return (
+    <button
+      className={"TodoButton" + (modalIsActive ? " TodoButton--close" : "")}
+      onClick={openCreateTodoModal}
+    >
+      +
+    </button>
+  );
+}
 
 export { CreateTodoButton };
