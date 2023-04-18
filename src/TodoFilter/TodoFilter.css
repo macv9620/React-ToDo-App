@@ -1,0 +1,51 @@
+.filterButtons{
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    align-items: center;
+    height: 20px;
+    padding-bottom: 25px;
+}
+
+.checkedTodos{
+    background-color: rgb(226, 224, 224);
+    border-radius: 50%;
+    color: white;
+    cursor: pointer;
+}
+
+.checkedTodos--selected{
+    background-color: var(--marine-green);
+    color: white;
+    box-shadow: rgba(0, 0, 0, 0.56) 0px 0px 6px 1px;
+}
+
+.unCheckedTodos{
+    color: rgb(226, 224, 224);
+    cursor: pointer;
+}
+
+.unCheckedTodos--selected{
+    color: var(--marine-green);
+    cursor: pointer;
+    box-shadow: rgba(0, 0, 0, 0.56) 0px 0px 6px 1px;
+    border-radius: 50%;
+}
+
+.allTodos{
+    font-size: 12px;
+    width: 21px;
+    height: 21px;
+    border-radius: 50%;
+    text-align: center;
+    color: rgb(226, 224, 224);
+    border: solid 1.5px rgb(226, 224, 224);
+    cursor: pointer;
+}
+
+.allTodos--selected{
+    color: var(--marine-green);
+    border-color: var(--marine-green);
+    box-shadow: rgba(0, 0, 0, 0.56) 0px 0px 6px 1px;
+
+}

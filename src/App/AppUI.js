@@ -10,6 +10,7 @@ import { useContext } from "react";
 import { TodoContext } from "../TodoContext";
 import { Modal } from "../Modal";
 import { TodoForm } from "../Modal/TodoForm";
+import { TodoFilter } from "../TodoFilter/TodoFilter";
 
 function AppUI() {
   const { searchedTodos, modalIsActive, loading } = useContext(TodoContext);
@@ -18,6 +19,10 @@ function AppUI() {
       <TodoTitle />
       <TodoCounter />
       <TodoProgressBar />
+      {!loading && (
+        <TodoFilter/>
+      )}
+
       <TodoSearch />
       <TodoList>
         {searchedTodos.map((todo) => (
