@@ -1,10 +1,7 @@
 import React from "react";
 import "./TodoFilter.css";
-import { useContext } from "react";
-import { TodoContext } from "../TodoContext";
 
-function TodoFilter() {
-  const { filterTodosBy, setFilterTodosBy } = useContext(TodoContext);
+function TodoFilter({ filterTodosBy, setFilterTodosBy }) {
   const changeFilter = (buttonFilterClicked)=>{
     setFilterTodosBy(buttonFilterClicked);
   }

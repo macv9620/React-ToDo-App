@@ -1,17 +1,8 @@
-import { createContext } from "react";
-import { useLocalStorage } from "./useLocalStorage";
+import { useLocalStorage } from "../useLocalStorage/useLocalStorage";
 import { useState } from "react";
 
-//Se crea el contexto global para la aplicación
-const TodoContext = createContext();
-
-//Este componente se encargará de retornar dentro de un context provider el árbol hijo al cual se le enviaran las props
-function TodoProvider(props) {
-  //Se trae toda la lógica de creación de las variables para poder enviarlas en la propiedad value del provider y que puedan ser accedidas
-  const { todos, saveTodos, loading, error} = useLocalStorage(
-    "TODOS_V1",
-    []
-  );
+function useTodos() {
+  const { todos, saveTodos, loading, error } = useLocalStorage("TODOS_V1", []);
 
   const [modalIsActive, setModalIsActive] = useState(false);
   const [inputIsEmpty, setInputIsEmpty] = useState(false);
@@ -19,6 +10,7 @@ function TodoProvider(props) {
   const [isModalOpenedFrom, setIsModalOpenedFrom] = useState("");
   const [isEditEnabled, setIsEditEnabled] = useState(true);
   const [filterTodosBy, setFilterTodosBy] = useState("all");
+
   const completedTodos = todos.filter((todo) => todo.completed).length;
   const totalTodos = todos.length;
 
@@ -86,7 +78,7 @@ function TodoProvider(props) {
     setModalIsActive(false);
   };
 
-  const updateTodo = (id, text) => {
+  function updateTodo (id, text)  {
     console.log("id: " + id);
     console.log("text: " + text);
     console.log(todos);
@@ -99,36 +91,30 @@ function TodoProvider(props) {
     setModalIsActive(false);
   };
 
-  return (
-    <TodoContext.Provider
-      value={{
-        totalTodos,
-        completedTodos,
-        setSearchBarValue,
-        searchBarValue,
-        searchedTodos,
-        checkUnCheckTodo,
-        deleteTodo,
-        loading,
-        error,
-        modalIsActive,
-        setModalIsActive,
-        saveTodos,
-        insertTodo,
-        inputIsEmpty,
-        setInputIsEmpty,
-        isModalOpenedFrom,
-        setIsModalOpenedFrom,
-        updateTodo,
-        isEditEnabled,
-        setIsEditEnabled,
-        filterTodosBy,
-        setFilterTodosBy,
-      }}
-    >
-      {props.children}
-    </TodoContext.Provider>
-  );
+  return {
+    totalTodos,
+    completedTodos,
+    setSearchBarValue,
+    searchBarValue,
+    searchedTodos,
+    checkUnCheckTodo,
+    deleteTodo,
+    loading,
+    error,
+    modalIsActive,
+    setModalIsActive,
+    saveTodos,
+    insertTodo,
+    inputIsEmpty,
+    setInputIsEmpty,
+    isModalOpenedFrom,
+    setIsModalOpenedFrom,
+    updateTodo,
+    isEditEnabled,
+    setIsEditEnabled,
+    filterTodosBy,
+    setFilterTodosBy,
+  };
 }
 
-export { TodoProvider, TodoContext };
+export {useTodos}

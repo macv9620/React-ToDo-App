@@ -1,14 +1,14 @@
 import React from "react";
 import "./TodoList.css";
-import { useContext } from "react";
-import { TodoContext } from "../TodoContext";
 
 
 function TodoList({
   children, 
+  loading, 
+  error, 
+  totalTodos, 
+  searchedTodos,
 }) {
-
-  const { loading, error, totalTodos, searchedTodos} = useContext(TodoContext);
 
     return (
       <>

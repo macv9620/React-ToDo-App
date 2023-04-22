@@ -1,45 +1,58 @@
 import React from "react";
 import "./TodoItem.css";
-import { useContext } from "react";
-import { TodoContext } from "../TodoContext";
 
-function TodoItem(props) {
-  const { checkUnCheckTodo, deleteTodo, setModalIsActive, setIsModalOpenedFrom } = useContext(TodoContext);
+
+function TodoItem({
+  checkUnCheckTodo,
+  deleteTodo,
+  setModalIsActive,
+  setIsModalOpenedFrom,
+  id,
+  completed,
+  text,
+}) {
+  
   const updateTodoState = () => {
-    checkUnCheckTodo(props.id);
+    checkUnCheckTodo(id);
   };
 
   const delTodo = () => {
-    deleteTodo(props.id);
+    deleteTodo(id);
   };
 
-  const openEditModal = (id, text)=>{
+  const openEditModal = (id, text) => {
     setModalIsActive(true);
     setIsModalOpenedFrom({
-      from: 'editButton',
+      from: "editButton",
       id: id,
       text: text,
     });
-
-  }
+  };
 
   return (
-    <li className={`TodoItem ${props.completed && "TodoItem--completed"}`}>
+    <li className={`TodoItem ${completed && "TodoItem--completed"}`}>
       <span
         id="TodoItemCheck"
         className={`material-symbols-outlined TodoItemCheck ${
-          props.completed && "TodoItemCheck--completed"
+          completed && "TodoItemCheck--completed"
         }`}
         onClick={() => updateTodoState()}
       >
         check_circle
       </span>
 
-      <p className={`TodoItem-p ${props.completed && "TodoItem-p--completed"}`}>
-        {props.text}
+      <p className={`TodoItem-p ${completed && "TodoItem-p--completed"}`}>
+        {text}
       </p>
 
-      {!props.completed && (<span className="material-symbols-outlined TodoItemEdit" onClick={()=>openEditModal(props.id, props.text)}>edit</span>)}
+      {!completed && (
+        <span
+          className="material-symbols-outlined TodoItemEdit"
+          onClick={() => openEditModal(id, text)}
+        >
+          edit
+        </span>
+      )}
 
       <span
         id="TodoItemDelete"

@@ -1,9 +1,11 @@
-import React, { useContext } from "react";
-import { TodoContext } from "../../TodoContext";
-
-function TodoForm() {
-  const { setModalIsActive, insertTodo, inputIsEmpty, setInputIsEmpty, isModalOpenedFrom, updateTodo } =
-    useContext(TodoContext);
+function TodoForm({ 
+  setModalIsActive, 
+  insertTodo, 
+  inputIsEmpty, 
+  setInputIsEmpty, 
+  isModalOpenedFrom, 
+  updateTodo,
+}) {
 
   const closeModal = () => {
     setModalIsActive(false);
@@ -19,8 +21,6 @@ function TodoForm() {
       updateTodo(isModalOpenedFrom.id, text.value);
     }
   };
-
-console.log(isModalOpenedFrom);
 
   return (
     <div className="modal-background">

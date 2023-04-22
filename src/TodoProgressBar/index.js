@@ -1,10 +1,7 @@
-import React from "react";
 import "./TodoProgress.css";
-import { useContext } from "react";
-import { TodoContext } from "../TodoContext";
 
-function TodoProgressBar() {
-  const {totalTodos, completedTodos} = useContext(TodoContext);
+
+function TodoProgressBar({totalTodos, completedTodos}) {
   if (totalTodos === 0) {
     return (
       <div className="w3-light-grey w3-round-xlarge">

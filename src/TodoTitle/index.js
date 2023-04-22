@@ -2,10 +2,10 @@ import React from "react";
 
 function TodoTitle() {
   return (
-    <header>
+    <section className="TodoHeaderTitle">
       <img className = 'TodoTitleImg' src='./imageLogo.png' />
       <h1 className="TodoTitle"> ToDo App</h1>
-    </header>
+    </section>
   );
 }
 

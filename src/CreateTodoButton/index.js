@@ -1,16 +1,11 @@
-import React, { useContext } from "react";
 import "./CreateTodoButton.css";
-import { TodoContext } from "../TodoContext";
 
-function CreateTodoButton() {
-  const {
-    loading,
-    setModalIsActive,
-    modalIsActive,
-    setInputIsEmpty,
-    isModalOpenedFrom,
-    setIsModalOpenedFrom,
-  } = useContext(TodoContext);
+function CreateTodoButton({
+  setModalIsActive,
+  modalIsActive,
+  setInputIsEmpty,
+  setIsModalOpenedFrom,
+}) {
 
   const openCreateTodoModal = () => {
     if (modalIsActive) {
