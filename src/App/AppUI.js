@@ -15,7 +15,7 @@ import { TodoLoading } from "../TodoLoading/TodoLoading";
 import { TodoError } from "../TodoError/TodoError";
 import { TodosIsEmpty } from "../TodosIsEmpty/TodosIsEmpty";
 import { NoMatches } from "../NoMatches/NoMatches";
-import { StorageAlertWithChange } from "../StorageChange";
+import { StorageAlert } from "../StorageChange/StorageAlert.js";
 
 function AppUI() {
   const {
@@ -39,6 +39,7 @@ function AppUI() {
     isModalOpenedFrom,
     updateTodo,
     refreshTodos,
+    refresh,
   } = useTodos();
 
   return (
@@ -94,8 +95,6 @@ function AppUI() {
         }
       ></TodoList>
 
-      
-
       {!loading && (
         <CreateTodoButton
           setModalIsActive={setModalIsActive}
@@ -117,11 +116,12 @@ function AppUI() {
           />
         </Modal>
       )}
-      {!loading&&(
-        <StorageAlertWithChange
-          refreshTodos={refreshTodos}
-        />
-      )}
+
+      <StorageAlert
+        refreshTodos={refreshTodos}
+        refresh={refresh}
+      />
+
     </React.Fragment>
   );
 }

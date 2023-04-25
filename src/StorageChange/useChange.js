@@ -1,9 +1,8 @@
 import { useEffect, useState } from "react";
 
-function withChange(WrappedComponent) {
-  return function (props) {
+function useChange() {
+    console.log('Ingreso a useChange');
     const [hasLocalStorageChanged,setHasLocalStorageChanged] = useState(false)
-    
     useEffect(()=>{
       function localStorageChange(){
         setHasLocalStorageChanged(true)
@@ -18,16 +17,8 @@ function withChange(WrappedComponent) {
         };
     },[])
 
-
-    if (hasLocalStorageChanged) {
-      return <WrappedComponent
-              setHasLocalStorageChanged={setHasLocalStorageChanged}
-              refresh={props.refreshTodos}
-               />;
-    } else {
-      return null;
-    }
+      return {setHasLocalStorageChanged, hasLocalStorageChanged}
   };
-}
 
-export { withChange };
+
+export { useChange };
