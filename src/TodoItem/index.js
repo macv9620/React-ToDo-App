@@ -7,17 +7,15 @@ function TodoItem({
   deleteTodo,
   setModalIsActive,
   setIsModalOpenedFrom,
-  id,
-  completed,
-  text,
+  todo,
 }) {
   
   const updateTodoState = () => {
-    checkUnCheckTodo(id);
+    checkUnCheckTodo(todo.id);
   };
 
   const delTodo = () => {
-    deleteTodo(id);
+    deleteTodo(todo.id);
   };
 
   const openEditModal = (id, text) => {
@@ -30,25 +28,25 @@ function TodoItem({
   };
 
   return (
-    <li className={`TodoItem ${completed && "TodoItem--completed"}`}>
+    <li className={`TodoItem ${todo.completed && "TodoItem--completed"}`}>
       <span
         id="TodoItemCheck"
         className={`material-symbols-outlined TodoItemCheck ${
-          completed && "TodoItemCheck--completed"
+          todo.completed && "TodoItemCheck--completed"
         }`}
         onClick={() => updateTodoState()}
       >
         check_circle
       </span>
 
-      <p className={`TodoItem-p ${completed && "TodoItem-p--completed"}`}>
-        {text}
+      <p className={`TodoItem-p ${todo.completed && "TodoItem-p--completed"}`}>
+        {todo.text}
       </p>
 
-      {!completed && (
+      {!todo.completed && (
         <span
           className="material-symbols-outlined TodoItemEdit"
-          onClick={() => openEditModal(id, text)}
+          onClick={() => openEditModal(todo.id, todo.text)}
         >
           edit
         </span>

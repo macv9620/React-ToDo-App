@@ -8,6 +8,7 @@ function CreateTodoButton({
 }) {
 
   const openCreateTodoModal = () => {
+    
     if (modalIsActive) {
       setModalIsActive(false);
     } else {

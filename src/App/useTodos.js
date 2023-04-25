@@ -2,7 +2,7 @@ import { useLocalStorage } from "../useLocalStorage/useLocalStorage";
 import { useState } from "react";
 
 function useTodos() {
-  const { todos, saveTodos, loading, error } = useLocalStorage("TODOS_V1", []);
+  const { todos, saveTodos, loading, error, setRefresh, setLoading } = useLocalStorage("TODOS_V1", []);
 
   const [modalIsActive, setModalIsActive] = useState(false);
   const [inputIsEmpty, setInputIsEmpty] = useState(false);
@@ -79,17 +79,19 @@ function useTodos() {
   };
 
   function updateTodo (id, text)  {
-    console.log("id: " + id);
-    console.log("text: " + text);
-    console.log(todos);
+
     const updatedTodos = [...todos];
     const todoIndex = updatedTodos.findIndex((todo) => todo.id === id);
-    console.log(updatedTodos[todoIndex].text);
-    console.log(text);
+
     updatedTodos[todoIndex].text = text;
     saveTodos(updatedTodos);
     setModalIsActive(false);
   };
+
+  function refreshTodos(){
+    setLoading(true)
+    setRefresh(true)
+  }
 
   return {
     totalTodos,
@@ -114,6 +116,7 @@ function useTodos() {
     setIsEditEnabled,
     filterTodosBy,
     setFilterTodosBy,
+    refreshTodos,
   };
 }
 

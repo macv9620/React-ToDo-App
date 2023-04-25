@@ -1,25 +1,32 @@
 import React from "react";
 import "./TodoList.css";
 
-
 function TodoList({
-  children, 
+  onLoading,
+  onError,
+  onEmpty,
+  onNoMatches,
+  render,
   loading, 
   error, 
   totalTodos, 
   searchedTodos,
+  searchBarValue,
 }) {
+console.log(totalTodos);
 
     return (
       <>
-        <p className="noSearchMatches">
-          {(loading && totalTodos === 0) && "Loading info..."}
-          {error && `An error has occurred, please refresh the page`}
-          {(!loading && totalTodos === 0) && 'Hey! You have no tasks created yet, get started!'}
-          {(searchedTodos.length === 0 && totalTodos !== 0) && 'Oops, there are no matches for your search'}
-        </p>
+        <section className="noSearchMatches">
+          {(loading) && onLoading()}
+          {error && onError()}
+          {(!loading && totalTodos === 0) && onEmpty()}
+          {(searchedTodos.length === 0 && totalTodos !== 0) && onNoMatches(searchBarValue)}
+        </section>
         <section className="TodoListSection">
-          <ul>{!error && children}</ul>
+          <ul>
+            {(!error && !loading) && render(searchedTodos)}
+          </ul>
         </section>
         
       </>

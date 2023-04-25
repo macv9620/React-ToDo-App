@@ -6,6 +6,8 @@ function useLocalStorage(localStorageProp, initialPropValue) {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
   const [todos, setTodos] = useState(initialPropValue);
+  const [refresh, setRefresh] = useState(false);
+
 
   const saveTodos = (todosToUpdate) => {
     const stringifiedTodos = JSON.stringify(todosToUpdate);
@@ -15,7 +17,7 @@ function useLocalStorage(localStorageProp, initialPropValue) {
   };
 
   React.useEffect(() => {
-    console.log("useEffect");
+
     try {
       setTimeout(() => {
         const localStoragedItem = localStorage.getItem(localStorageProp);
@@ -26,11 +28,13 @@ function useLocalStorage(localStorageProp, initialPropValue) {
         } else {
           defaultItem = JSON.parse(localStoragedItem);
         }
+
         saveTodos(defaultItem);
-      }, 2000);
+        setRefresh(false);
+      }, 1000);
     } catch (error) {}
-  }, []);
-  return { todos, saveTodos, loading, setLoading, error, setError };
+  }, [refresh]);
+  return { todos, saveTodos, loading, setLoading, error, setError, setRefresh};
 }
 
 export { useLocalStorage };
