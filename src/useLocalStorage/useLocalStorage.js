@@ -33,6 +33,7 @@ function useLocalStorage(localStorageProp, initialPropValue) {
         setRefresh(false);
       }, 1000);
     } catch (error) {}
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [refresh]);
   return { todos, saveTodos, loading, setLoading, error, setError, setRefresh};
 }
