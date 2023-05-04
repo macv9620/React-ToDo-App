@@ -1,23 +1,23 @@
 import React from "react";
-import { TodoCounter } from "../TodoCounter";
-import { TodoSearch } from "../TodoSearch";
-import { CreateTodoButton } from "../CreateTodoButton";
-import { TodoList } from "../TodoList";
-import { TodoItem } from "../TodoItem";
-import { TodoTitle } from "../TodoTitle";
-import { TodoProgressBar } from "../TodoProgressBar";
-import { Modal } from "../Modal";
-import { TodoForm } from "../Modal/TodoForm";
-import { TodoFilter } from "../TodoFilter/TodoFilter";
-import { TodoHeader } from "../TodoHeader/TodoHeader";
-import { useTodos } from "./useTodos";
-import { TodoLoading } from "../TodoLoading/TodoLoading";
-import { TodoError } from "../TodoError/TodoError";
-import { TodosIsEmpty } from "../TodosIsEmpty/TodosIsEmpty";
-import { NoMatches } from "../NoMatches/NoMatches";
-import { StorageAlert } from "../StorageChange/StorageAlert.js";
+import { TodoCounter } from "../../UI/TodoCounter";
+import { TodoSearch } from "../../UI/TodoSearch";
+import { CreateTodoButton } from "../../UI/CreateTodoButton";
+import { TodoList } from "../../UI/TodoList";
+import { TodoItem } from "../../UI/TodoItem";
+import { TodoTitle } from "../../UI/TodoTitle";
+import { TodoProgressBar } from "../../UI/TodoProgressBar";
+import { Modal } from "../../UI/Modal";
+import { TodoForm } from "../../UI/Modal/TodoForm";
+import { TodoFilter } from "../../UI/TodoFilter/TodoFilter";
+import { TodoHeader } from "../../UI/TodoHeader/TodoHeader";
+import { useTodos } from "../useTodos";
+import { TodoLoading } from "../../UI/TodoLoading/TodoLoading";
+import { TodoError } from "../../UI/TodoError/TodoError";
+import { TodosIsEmpty } from "../../UI/TodosIsEmpty/TodosIsEmpty";
+import { NoMatches } from "../../UI/NoMatches/NoMatches";
+import { StorageAlert } from "../../StorageChange/StorageAlert.js";
 
-function AppUI() {
+function HomePage() {
   const {
     searchedTodos,
     modalIsActive,
@@ -126,4 +126,4 @@ function AppUI() {
   );
 }
 
-export { AppUI };
+export { HomePage };
