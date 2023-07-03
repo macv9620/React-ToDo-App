@@ -13,7 +13,7 @@ function TodoList({
   searchedTodos,
   searchBarValue,
 }) {
-console.log(totalTodos);
+
 
     return (
       <>

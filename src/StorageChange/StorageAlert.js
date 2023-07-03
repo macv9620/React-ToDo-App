@@ -2,7 +2,7 @@ import { useChange } from "./useChange";
 import './StorageChange.css'
 
 function StorageAlert({refreshTodos}){
-    console.log('Ingreso al componente');
+
         const{hasLocalStorageChanged, setHasLocalStorageChanged}=useChange()
 
         function refreshItems(){
