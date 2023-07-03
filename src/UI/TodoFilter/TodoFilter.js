@@ -9,7 +9,7 @@ function TodoFilter({ filterTodosBy, setFilterTodosBy }) {
     <div className="filterButtons">
       <p className="filterButtons-text">Filter by: </p>
       <span
-        className={`material-symbols-outlined checkedTodos ${
+        className={`material-symbols-outlined size-35 checkedTodos ${
           filterTodosBy === "checked" ? "checkedTodos--selected" : ""
         }`}
         onClick={() => changeFilter("checked")}
@@ -17,7 +17,7 @@ function TodoFilter({ filterTodosBy, setFilterTodosBy }) {
         check_circle
       </span>
       <span
-        className={`material-symbols-outlined unCheckedTodos ${
+        className={`material-symbols-outlined size-35 unCheckedTodos ${
           filterTodosBy === "unChecked" ? "unCheckedTodos--selected" : ""
         }`}
         onClick={() => changeFilter("unChecked")}

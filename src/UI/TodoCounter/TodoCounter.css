@@ -4,3 +4,9 @@
   margin: 3px;
   padding: 5px 0px;
 }
+
+@media (max-width: 500px) {
+  .TodoCounter {
+    font-size: 26px;
+  }
+}

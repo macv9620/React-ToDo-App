@@ -49,10 +49,29 @@ body {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-  min-width: 280px;
   max-width: 750px;
 }
 
+@media (max-width: 500px) {
+  
+  #root {
+    margin: 0;
+    padding: 0;
+    border-radius: 0px;
+
+  }
+
+  body {
+    margin: 0;
+    padding: 0;
+  }
+
+  .TodoHeaderTitle{
+    border-top-left-radius: 0px;
+    border-top-right-radius: 0px;
+  }
+  
+}
 
 
 
