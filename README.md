@@ -1,70 +1,62 @@
-# Getting Started with Create React App
+# Proyecto "ToDo" - React
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Deploy
 
-## Available Scripts
+https://get-yours.netlify.app/
 
-In the project directory, you can run:
+Pequeño demo del proyecto:
 
-### `npm start`
+https://i.ibb.co/cx22Z4W/d004b5020ef2.gif
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Proyecto creado en React, cuenta con un "pseudo backend" desarollado en JSON Server para la administración de los productos, se anexa el repositorio del JSON Server.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+https://github.com/macv9620/ecommerce-json-server.git
 
-### `npm test`
+### Descripción
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+El proyecto usa autenticación JWT y manejo de de sesión de usuario en el JSON Server desplegado en "OnRender", la aplicación permite múltiples funcionalidades como:
 
-### `npm run build`
+#### Creación de usuarios.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Se tienen dos tipos de usuarios que pueden ser creados mediante el formulario Sign Up:
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+* **Customer:** este usuario puede agregar productos al carrito y hacer compras.
+* **Admin:** este usuario puede hacer lo mismo que el Customer, adicionalmente puede eliminar productos de la base de datos y también crearlos.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Auque mediante el formulario se pueden crear los usuarios, se dan los siguientes usuarios de prueba:
 
-### `npm run eject`
+**Customer (customer@mail.com / clave: 0000)**
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+**Admin (admin@mail.com / clave: 0000)**
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+El control de lo que puede o no hacer un usuario se da mediante el JWT payload que contiene información sobre los permisos y accesos que tiene el usuario.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+---
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+#### Rutas ocultas
 
-## Learn More
+Dependiendo de si el usuario ha iniciado sesión o no, se muestran algunas rutas relacionadas con autenticación y permisos.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+---
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+#### Diseño responsivo
 
-### Code Splitting
+La aplicación se adapta a pantallas de móviles y computadores.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+---
 
-### Analyzing the Bundle Size
+#### Endpoints implementados y soportados por la aplicación que permiten:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+* **Log in:** inicio se sesión y genera el JWT que es usado para el acceso de contenidos a los usuarios.
+* **Sign up:** creación de usuarios por perfiles (Customer, Admin).
+* **Create:** creación de nuevos productos pudiendo adjuntar imagen desde local usando **Base64 Encode** y consumiento una api para host de imágenes o directamente mediante una url (sólo Admin).
+* **Post order:** envío de nuevas órdenes de usuario al backend, debido a que la aplicación y el JSON server están desplegados permiten en conjunto persistencia de datos.
+* **Get orders:** consulta de órdenes de un usuario.
+* **Get products:** consulta de productos creados en la BD.
+* **Delete products:** permite al perfil ADMIN eliminar productos.
 
-### Making a Progressive Web App
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+#### Control de errores e información a ususario
 
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+La aplicación está diseñada para ser informativa al usuario, controlando errores desde el backend y renderizando ventanas informativas al usuario en caso de ser necesario.
